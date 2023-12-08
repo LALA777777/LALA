@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HappybirthDay</title>
+    <style>
+       body {
+          background-image: url('background.jpg'); /* 设置背景图片 */
+          background-size: cover; /* 背景图片覆盖整个元素 */
+          background-repeat: no-repeat; /* 背景图片不重复 */
+          background-attachment: fixed; /* 背景图片固定不随页面滚动 */
+       }
+
+       #dynamicText {
+          font-size: 20px;
+          color: #8d4bbb;
+          text-align: center; /* 水平居中 */
+          display: flex; /* 开启flex布局 */
+          justify-content: center; /* 水平居中（对于flex容器）*/
+          align-items: center; /* 垂直居中 */
+          height: 100vh; /* 设置容器的高度为视口高度的100%，以支持垂直居中 */
+       }
+    </style>
+</head>
+<body>
+    <div id="dynamicText"></div>
+    <audio controls autoplay>
+        <source src="Canon.mp3" type="audio/mpeg">
+        <source src="music.ogg" type="audio/ogg">
+        您的浏览器不支持音频元素。
+    </audio>
+    <script>
+       const paragraphs = [
+          "2023年12月8日，恰逢玩家LYD激活地球online的第9861天。",
+          "在这场名为“人生”的史诗级副本中，他凭借一路累积的勇气和智慧、真诚与善良，已经征服了无数难关，用他的策略和力量，在这个复杂的现实世界中构筑了一个令人瞩目的城堡。",
+          "此时此刻，让我们一起为你的新成就鼓掌，恭喜你解锁了又一个关卡。",
+          "愿你在接下来的冒险旅程中，继续披荆斩棘，所向披靡，无论面对怎样的逆境，都有满血复活、重整旗鼓的勇气，以你独特的魔法和战术，打败一个又一个怪物。",
+          "愿你拥有更多的闲暇时光，去探索游戏中那些诗意的场景，或是在山川原野间漫步，或是在星河冰川间翱翔，与一朵摇曳的小花、一段闪烁的树影、一阵轻拂的风不期而遇，捕捉每一次的惊喜和美好。",
+          "最后，祝你永葆满格的体力值与San值，爆棚的好运气，一路上志同道合的好伙伴，和一颗平凡的真心。",
+          "生日快乐！"
+       ];
+       let currentParagraph = 0;
+       let index = 0;
+       const speed = 100;  // 控制文字显示速度，单位是毫秒
+
+       function typeWriter() {
+           if (currentParagraph < paragraphs.length) {
+               if (index < paragraphs[currentParagraph].length) {
+                   document.getElementById("dynamicText").innerHTML += paragraphs[currentParagraph].charAt(index);
+                   index++;
+                   setTimeout(typeWriter, speed);
+               } else {
+                   document.getElementById("dynamicText").innerHTML += '<br><br>';
+                   index = 0;
+                   currentParagraph++;
+                   setTimeout(typeWriter, speed);
+               }
+           }
+       }
+
+       document.addEventListener("DOMContentLoaded", typeWriter);
+    </script>
+</body>
+</html>
